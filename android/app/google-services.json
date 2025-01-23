@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "99150711018",
+    "project_id": "medi-flow-db",
+    "storage_bucket": "medi-flow-db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99150711018:android:c0e8e4f1e78995710e2f93",
+        "android_client_info": {
+          "package_name": "com.mediflow.app.medi_flow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeGhJcGi7m5Z8NSZ5LRpK2ng_EXiwQdR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
