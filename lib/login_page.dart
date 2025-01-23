@@ -63,9 +63,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
 
-
-
-kiyhjfdgfd
             // password field
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
