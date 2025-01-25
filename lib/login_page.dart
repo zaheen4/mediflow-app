@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:medi_flow/screen_background.dart';
+import 'package:medi_flow/utils/assets_path.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+
+  static const String name = '/login';
 
   // Loading Time..
   Duration get loadingTime => const Duration(milliseconds: 2000);
@@ -24,8 +28,12 @@ class LoginPage extends StatelessWidget {
       body: Stack(
         children: [
           // Background
-          const ScreenBackground(),
-
+          SvgPicture.asset(
+            AssetsPath.backgroundSvg,
+            fit: BoxFit.cover,
+            height: MediaQuery.sizeOf(context).height,
+            width: double.maxFinite,
+          ),
           // Login form
           FlutterLogin(
             onLogin: _authUser,
