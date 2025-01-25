@@ -1,130 +1,98 @@
-// ignore_for_file: avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_login/flutter_login.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medi_flow/screen_background.dart';
+import 'package:medi_flow/utils/assets_path.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
+  static const String name = '/login';
 
-class _LoginPageState extends State<LoginPage> {
+  // Loading Time..
+  Duration get loadingTime => const Duration(milliseconds: 2000);
+
+  // Login
+  Future<String?> _authUser(LoginData data) {
+    return Future.delayed(loadingTime).then((value) => null);
+  }
+
+  // Forgot Password
+  Future<String?> _recoverPassword(String data) {
+    return Future.delayed(loadingTime).then((value) => null);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-          child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-            // LOGO
-            Image.asset(
-              'lib/assets/4843686.png',
-              height: 110,
-            ),
-            SizedBox(
-              height: 15,
-            ),
-
-            Text(
-              'Welcome to our APP!',
-              style: GoogleFonts.bebasNeue(fontSize: 45),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-
-            //username/email
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10.0),
+      body: Stack(
+        children: [
+          // Background
+          SvgPicture.asset(
+            AssetsPath.backgroundSvg,
+            fit: BoxFit.cover,
+            height: MediaQuery.sizeOf(context).height,
+            width: double.maxFinite,
+          ),
+          // Login form
+          FlutterLogin(
+            onLogin: _authUser,
+            onRecoverPassword: _recoverPassword,
+            theme: LoginTheme(
+              pageColorLight: Colors.transparent,
+              pageColorDark: Colors.transparent,
+              cardTheme: CardTheme(
+                color: Colors.pink.shade100,
+                elevation: 10,
+                shadowColor: Colors.pink.shade200,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Email',
-                    ),
-                  ),
+              ),
+              buttonTheme: LoginButtonTheme(
+                splashColor: Colors.pinkAccent.shade100,
+                backgroundColor: Colors.redAccent.shade400,
+                highlightColor: Colors.pink.shade300,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                elevation: 8,
+              ),
+              inputTheme: InputDecorationTheme(
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 18, // Adjust vertical padding to move text higher
+                  horizontal: 20,
+                ),
+                floatingLabelBehavior: FloatingLabelBehavior.always, // Keep label always visible
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.pink.shade200),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.black45),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(color: Colors.black45, width: 2),
+                ),
+                labelStyle: TextStyle(
+                  fontSize: 16, // Increase or decrease font size
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey.shade700,
+                ),
+                hintStyle: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey.shade500,
                 ),
               ),
             ),
 
-            SizedBox(
-              height: 15,
-            ),
-
-
-            // password field
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Password',
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(
-              height: 15,
-            ),
-
-            // sign in button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    color: Colors.amber[300],
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
-
-            SizedBox(height: 15),
-
-// register button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Not a member already? ',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'Register Now',
-                  style: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ]))),
+          ),
+        ],
+      ),
     );
   }
 }
