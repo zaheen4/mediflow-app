@@ -6,9 +6,9 @@ import 'package:medi_flow/login_page.dart';
 void main() async {
   // for firebase
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp();
   
+
   runApp(const MyApp());
 }
 
