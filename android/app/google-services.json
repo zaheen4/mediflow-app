@@ -12,7 +12,12 @@
           "package_name": "com.mediflow.app.medi_flow"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "99150711018-9ge0olproj5vs6tbkgir93trt7fjotk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAeGhJcGi7m5Z8NSZ5LRpK2ng_EXiwQdR4"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "99150711018-9ge0olproj5vs6tbkgir93trt7fjotk8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "99150711018-sd4irc3m9mu0fo1s3p09ieov4n13q5mq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mediflow.app.mediFlow"
+              }
+            }
+          ]
         }
       }
     }
