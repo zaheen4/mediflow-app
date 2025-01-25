@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medi_flow/screen_background.dart';
 import 'package:medi_flow/utils/assets_path.dart';
 
 class LoginPage extends StatelessWidget {
