@@ -71,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
 
       // Sign in to Firebase
       await FirebaseAuth.instance.signInWithCredential(credential);
+      Navigator.of(context).pushReplacementNamed('/pages/home_page');
 
       return null; // Login success
     } catch (e) {
@@ -95,6 +96,9 @@ class _LoginPageState extends State<LoginPage> {
             onLogin: _authUser,
             onRecoverPassword: _recoverPassword,
             onSignup: _signupUser,
+            onSubmitAnimationCompleted: () {
+              Navigator.of(context).pushReplacementNamed('/pages/home_page');
+            },
             theme: LoginTheme(
               switchAuthTextColor: Colors.redAccent.shade400,
               pageColorLight: Colors.transparent,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medi_flow/screen_background.dart';
 import 'package:medi_flow/widgets/app_logo.dart';
 
-import '../login_page.dart';
+import '../pages/login_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
