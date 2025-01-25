@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:medi_flow/login_page.dart';
+import 'package:medi_flow/pages/login_page.dart';
+import 'pages/home_page.dart';
+
 
 
 void main() async {
@@ -19,7 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/pages/home_page': (context) => HomePage(),
+      },
     );
   }
 }
