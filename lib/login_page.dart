@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
 
             SizedBox(height: 15),
 
-// register button
+            // register text
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -124,7 +124,31 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-          ]))),
+
+            SizedBox(height: 15),
+
+
+
+            // google sign in button
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    color: Colors.blue[300],
+                    borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child: Text(
+                    'Sign In with Google',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+
+
+          ]))
+          ),
     );
   }
 }
