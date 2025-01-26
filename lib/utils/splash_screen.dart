@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
   // calls next screen
   Future<void> _moveToNextScreen() async {
     await Future.delayed(const Duration(milliseconds: 1500));
-    Navigator.of(context).pushReplacementNamed('/pages/home_page');
+    Navigator.of(context).pushReplacementNamed('/pages/login_page');
   }
 
   @override
