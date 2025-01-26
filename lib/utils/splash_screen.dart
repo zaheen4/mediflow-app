@@ -1,36 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:medi_flow/screen_background.dart';
-import 'package:medi_flow/widgets/app_logo.dart';
-
-import '../pages/login_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:medi_flow/pages/login_page.dart';
+import 'assets_path.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-  static const String name = '/';
+
+  static const String name = '/splash';
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
-  void iniState(){
+  @override
+  void initState() {
     super.initState();
-    moveToNextScreen();
+    _moveToNextScreen();
   }
 
-  Future<void> moveToNextScreen() async{
-    await Future.delayed(const Duration(seconds: 10));
-    Navigator.pushReplacementNamed(context, LoginPage.name);
+  // calls next screen
+  Future<void> _moveToNextScreen() async {
+    await Future.delayed(const Duration(milliseconds: 1500));
+    Navigator.of(context).pushReplacementNamed('/pages/home_page');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ScreenBackground(
-        child: Center(
-          child: AppLogo(),
-        ),
+      body: Stack(
+        children: [
+          // Background
+          SvgPicture.asset(
+            AssetsPath.backgroundSvg,
+            fit: BoxFit.cover,
+            height: MediaQuery.sizeOf(context).height,
+            width: double.maxFinite,
+          ),
+          // Logo
+          Center(
+            child: Image.asset(
+              AssetsPath.logoPng,
+              height: 350, // Adjust size as needed
+              width: 350,
+            ),
+          ),
+        ],
       ),
     );
   }

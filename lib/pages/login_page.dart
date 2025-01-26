@@ -93,9 +93,24 @@ class _LoginPageState extends State<LoginPage> {
           ),
           // Login form
           FlutterLogin(
-            onLogin: _authUser,
+            onLogin: (loginData) async {
+              final error = await _authUser(loginData);
+              if (error == null) {
+                // Navigate to HomePage
+                Navigator.of(context).pushReplacementNamed('/pages/home_page');
+              }
+              return error;
+            },
             onRecoverPassword: _recoverPassword,
-            onSignup: _signupUser,
+            //onSignup: _signupUser,
+            onSignup: (signupData) async {
+              final error = await _signupUser(signupData);
+              if (error == null) {
+                // Navigate to HomePage
+                Navigator.of(context).pushReplacementNamed('/pages/home_page');
+              }
+              return error;
+            },
             onSubmitAnimationCompleted: () {
               Navigator.of(context).pushReplacementNamed('/pages/home_page');
             },
