@@ -1,4 +1,4 @@
 # medi_flow
 
-Group project for lab
+Android app made using Flutter
 
