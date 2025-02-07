@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:medi_flow/utils/assets_path.dart';
 
+import '../utils/colors.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -63,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
       }
 
       final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      await googleUser.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -82,35 +84,29 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, // Prevent resizing when keyboard appears
       body: Stack(
         children: [
           // Background
           SvgPicture.asset(
             AssetsPath.backgroundSvg,
             fit: BoxFit.cover,
-            height: MediaQuery.sizeOf(context).height,
+            height: MediaQuery
+                .sizeOf(context)
+                .height,
             width: double.maxFinite,
           ),
-          // Login form
+          // Login form (FlutterLogin or any other content)
           FlutterLogin(
             onLogin: (loginData) async {
               final error = await _authUser(loginData);
               if (error == null) {
-                // Navigate to HomePage
                 Navigator.of(context).pushReplacementNamed('/pages/home_page');
               }
               return error;
             },
             onRecoverPassword: _recoverPassword,
-            //onSignup: _signupUser,
-            onSignup: (signupData) async {
-              final error = await _signupUser(signupData);
-              if (error == null) {
-                // Navigate to HomePage
-                Navigator.of(context).pushReplacementNamed('/pages/home_page');
-              }
-              return error;
-            },
+            onSignup: _signupUser,
             onSubmitAnimationCompleted: () {
               Navigator.of(context).pushReplacementNamed('/pages/home_page');
             },
@@ -142,8 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                   vertical: 18, // Adjust vertical padding to move text higher
                   horizontal: 20,
                 ),
-                floatingLabelBehavior:
-                    FloatingLabelBehavior.always, // Keep label always visible
+                floatingLabelBehavior: FloatingLabelBehavior.always,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
                   borderSide: BorderSide(color: Colors.pink.shade200),
@@ -157,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderSide: BorderSide(color: Colors.black45, width: 2),
                 ),
                 labelStyle: TextStyle(
-                  fontSize: 16, // Increase or decrease font size
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Colors.grey.shade700,
                 ),
@@ -169,6 +164,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
 
+          // The Google sign-in button fixed at the bottom
           Positioned(
             bottom: 20,
             left: 0,
@@ -184,19 +180,19 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 icon: SvgPicture.asset(
-                  'assets/icons/google_icon.svg', // Your Google icon location
+                  'assets/icons/google_icon.svg',
                   height: 24,
                   width: 24,
                 ),
-                label: const Text(
+                label: Text(
                   'Sign in with Google',
-                  style: TextStyle(color: Colors.red, fontSize: 16),
+                  style: TextStyle(color: secondaryColor, fontSize: 16),
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   foregroundColor: Colors.black,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
