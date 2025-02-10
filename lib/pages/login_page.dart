@@ -124,25 +124,25 @@ class _LoginPageState extends State<LoginPage> {
               Navigator.of(context).pushReplacementNamed('/pages/home_page');
             },
             theme: LoginTheme(
-              switchAuthTextColor: Colors.redAccent.shade400,
+              switchAuthTextColor: Colors.black87,
               pageColorLight: Colors.transparent,
               pageColorDark: Colors.transparent,
               cardTheme: CardTheme(
-                color: Colors.pink.shade100,
+                color: Colors.grey[300],
                 elevation: 10,
-                shadowColor: Colors.pink.shade200,
+                shadowColor: Colors.black45,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
               ),
               buttonTheme: LoginButtonTheme(
-                splashColor: Colors.pinkAccent.shade100,
-                backgroundColor: Colors.redAccent.shade400,
-                highlightColor: Colors.pink.shade300,
+                splashColor: Colors.red,
+                backgroundColor: secondaryColor,
+                highlightColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                elevation: 8,
+                elevation: 3,
               ),
               inputTheme: InputDecorationTheme(
                 filled: true,
@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(color: Colors.pink.shade200),
+                  borderSide: BorderSide(color: primaryColor),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 hintStyle: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey.shade500,
+                  color: Colors.white,
                 ),
               ),
             ),

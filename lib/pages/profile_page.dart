@@ -141,7 +141,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Profile",
           style: TextStyle(color: Colors.white),
         ),
@@ -170,6 +170,9 @@ class _ProfilePageState extends State<ProfilePage> {
             ElevatedButton(
               onPressed: _showEditProfileDialog,
               child: const Text("Edit Profile"),
+              style: ElevatedButton.styleFrom(
+                alignment: Alignment.centerRight,
+              ),
             ),
           ],
         ),
