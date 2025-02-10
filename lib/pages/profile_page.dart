@@ -115,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
       // Update email if it is different
       if (newEmail.isNotEmpty && newEmail != _email) {
-        await _user!.updateEmail(newEmail);
+        await _user!.verifyBeforeUpdateEmail(newEmail);
         setState(() {
           _email = newEmail;
           _username = newEmail.split('@')[0]; // Update username
