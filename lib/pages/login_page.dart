@@ -21,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   Duration get loadingTime => const Duration(milliseconds: 2000);
 
   bool _showGoogleButton = false; // Initially hidden
+  @override
   void initState() {
     super.initState();
 
@@ -112,9 +113,9 @@ class _LoginPageState extends State<LoginPage> {
           FlutterLogin(
             onLogin: (loginData) async {
               final error = await _authUser(loginData);
-              if (error == null) {
-                Navigator.of(context).pushReplacementNamed('/pages/home_page');
-              }
+              // if (error == null) {
+              //   // Navigator.of(context).pushReplacementNamed('/pages/home_page');
+              // }
               return error;
             },
             onRecoverPassword: _recoverPassword,

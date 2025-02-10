@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medi_flow/pages/login_page.dart';
 import 'assets_path.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -41,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
           Center(
             child: Image.asset(
               AssetsPath.logoPng,
-              height: 350, // Adjust size as needed
-              width: 350,
+              height: 250, // Adjust size as needed
+              width: 250,
             ),
           ),
         ],

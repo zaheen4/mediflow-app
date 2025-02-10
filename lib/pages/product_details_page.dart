@@ -155,7 +155,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         children: [
                           //price
                           Text(
-                            "\৳" + widget.product.price,
+                            "\৳${widget.product.price}",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

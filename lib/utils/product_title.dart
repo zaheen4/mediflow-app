@@ -44,7 +44,7 @@ class ProductTitle extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //price
-                  Text('\৳' + product.price,style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[700]),),
+                  Text('\৳${product.price}',style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[700]),),
                   //rating
                   Row(
                     children: [

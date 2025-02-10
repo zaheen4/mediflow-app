@@ -57,12 +57,12 @@ class VoucherPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);  // Go back to the home page
               },
-              child: Text("Back to Home",style: TextStyle(color: Colors.black),),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 textStyle: TextStyle(fontSize: 16),
               ),
+              child: Text("Back to Home",style: TextStyle(color: Colors.black),),
             ),
           ],
         ),
