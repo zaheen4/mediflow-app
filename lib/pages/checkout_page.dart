@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medi_flow/utils/colors.dart';  // Assuming you have a color file for consistent styling
+import 'package:medi_flow/utils/colors.dart'; // Assuming you have a color file for consistent styling
 
 class CheckoutPage extends StatelessWidget {
   final double totalPrice;
@@ -11,12 +11,13 @@ class CheckoutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Checkout", style: TextStyle(color: Colors.white)),
-        backgroundColor: secondaryColor, // Use the same secondary color as HomePage
+        backgroundColor:
+            secondaryColor, // Use the same secondary color as HomePage
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Add some space and style to the confirmation text
             Text(
@@ -32,17 +33,19 @@ class CheckoutPage extends StatelessWidget {
             // Container for showing order summary (optional: can list items, etc.)
             Container(
               padding: const EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
+                decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
-                    offset: Offset(0, 2),
+                  color: Colors.black26,
+                  blurRadius: 8,
+                  offset: Offset(0, 2),
                   ),
                 ],
-              ),
+                ),
+                width: double.infinity, // Make the box take the full width
+              
               child: Column(
                 children: [
                   Text(
@@ -51,7 +54,8 @@ class CheckoutPage extends StatelessWidget {
                   ),
                   // You can list items here dynamically if needed, for now it's a placeholder
                   SizedBox(height: 10),
-                  Text("Total Price: ৳${totalPrice.toStringAsFixed(2)}", style: TextStyle(fontSize: 16)),
+                  Text("Total Price: ৳${totalPrice.toStringAsFixed(2)}",
+                      style: TextStyle(fontSize: 16)),
                 ],
               ),
             ),
@@ -63,7 +67,7 @@ class CheckoutPage extends StatelessWidget {
                 backgroundColor: primaryColor,
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 100),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
               onPressed: () {
@@ -77,7 +81,7 @@ class CheckoutPage extends StatelessWidget {
                       actions: [
                         TextButton(
                           onPressed: () {
-                            Navigator.pop(context);  // Close the dialog
+                            Navigator.pop(context); // Close the dialog
                           },
                           child: Text("OK"),
                         ),
@@ -86,7 +90,9 @@ class CheckoutPage extends StatelessWidget {
                   },
                 );
               },
-              child: Center(child: Text("Confirm Order", style: TextStyle(color:Colors.white,fontSize: 18))),
+              child: Center(
+                  child: Text("Confirm Order",
+                      style: TextStyle(color: Colors.white, fontSize: 18))),
             ),
           ],
         ),

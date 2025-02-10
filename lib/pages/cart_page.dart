@@ -36,41 +36,66 @@ class CartPage extends StatelessWidget {
           children: [
             // Custom Cart
             Expanded(
-              child: ListView.builder(
+                child: ListView.builder(
                   itemCount: value.cart.length,
                   itemBuilder: (context, index) {
-                    final Product product = value.cart[index];
-                    final String productName = product.name;
-                    final String productPrice = product.price;
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[500],
-                          borderRadius: BorderRadius.circular(20)),
-                      margin: EdgeInsets.only(left: 20, top: 20, right: 20),
-                      child: ListTile(
-                        title: Text(
-                          productName,
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(
-                          productPrice,
-                          style: TextStyle(color: Colors.grey[200]),
-                        ),
-                        trailing: IconButton(
-                            onPressed: () => removeFromCart(product, context),
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.grey[300],
-                            )),
+                  final Product product = value.cart[index];
+                  final String productName = product.name;
+                  final String productPrice = product.price;
+                  return Container(
+                    decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
                       ),
-                    );
+                    ],
+                    ),
+                    margin: EdgeInsets.only(left: 20, top: 20, right: 20),
+                    child: ListTile(
+                    title: Text(
+                      productName,
+                      style: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      productPrice,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () => removeFromCart(product, context),
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.black,
+                      )),
+                    ),
+                  );
                   }),
             ),
+
+            // Total Price
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 40.0, vertical: 5.0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Total: ৳${calculateTotalPrice(value.cart).toStringAsFixed(2)}",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, wordSpacing: 0),
+                ),
+              ),
+            ),
+
             // Pay Button
             Padding(
               padding: const EdgeInsets.all(25.0),
+              
               child: MyButton(
+                
                 text: "Pay Now",
                 onTap: () {
                   // Calculate total price
@@ -79,7 +104,9 @@ class CartPage extends StatelessWidget {
                   // Navigate to the CheckoutPage with the total price
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckoutPage(totalPrice: totalPrice)),
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            CheckoutPage(totalPrice: totalPrice)),
                   );
                 },
               ),
