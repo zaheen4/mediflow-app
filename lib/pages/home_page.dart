@@ -47,12 +47,12 @@ class _HomePageState extends State<HomePage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: Text("Cancel"),
+                child: Text("Cancel", style: TextStyle(color: Colors.black),),
               ),
               ElevatedButton(
                 onPressed: () => Navigator.pop(context, true),
-                child: Text("Logout"),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                child: Text("Logout", style: TextStyle(color: Colors.white),),
               ),
             ],
           ),

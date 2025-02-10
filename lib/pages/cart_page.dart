@@ -4,7 +4,7 @@ import 'package:medi_flow/models/shop.dart';
 import 'package:medi_flow/utils/button.dart';
 import 'package:medi_flow/utils/colors.dart';
 import 'package:provider/provider.dart';
-import 'checkout_page.dart';  // Import CheckoutPage
+import 'checkout_page.dart'; // Import CheckoutPage
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -13,6 +13,15 @@ class CartPage extends StatelessWidget {
   void removeFromCart(Product product, BuildContext context) {
     final shop = context.read<Shop>();
     shop.removeFromCart(product);
+  }
+
+  // Calculate total price
+  double calculateTotalPrice(List<Product> cart) {
+    double totalPrice = 0.0;
+    for (var product in cart) {
+      totalPrice += double.parse(product.price);
+    }
+    return totalPrice;
   }
 
   @override
@@ -35,7 +44,8 @@ class CartPage extends StatelessWidget {
                     final String productPrice = product.price;
                     return Container(
                       decoration: BoxDecoration(
-                          color: Colors.grey[500], borderRadius: BorderRadius.circular(20)),
+                          color: Colors.grey[500],
+                          borderRadius: BorderRadius.circular(20)),
                       margin: EdgeInsets.only(left: 20, top: 20, right: 20),
                       child: ListTile(
                         title: Text(
@@ -63,10 +73,13 @@ class CartPage extends StatelessWidget {
               child: MyButton(
                 text: "Pay Now",
                 onTap: () {
-                  // Navigate to the CheckoutPage
+                  // Calculate total price
+                  double totalPrice = calculateTotalPrice(value.cart);
+
+                  // Navigate to the CheckoutPage with the total price
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckoutPage()),
+                    MaterialPageRoute(builder: (context) => CheckoutPage(totalPrice: totalPrice)),
                   );
                 },
               ),

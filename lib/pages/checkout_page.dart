@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:medi_flow/utils/colors.dart';  // Assuming you have a color file for consistent styling
 
 class CheckoutPage extends StatelessWidget {
-  const CheckoutPage({super.key});
+  final double totalPrice;
+
+  const CheckoutPage({super.key, required this.totalPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,7 @@ class CheckoutPage extends StatelessWidget {
                   ),
                   // You can list items here dynamically if needed, for now it's a placeholder
                   SizedBox(height: 10),
-                  Text("Total Price: ৳5000", style: TextStyle(fontSize: 16)),
+                  Text("Total Price: ৳${totalPrice.toStringAsFixed(2)}", style: TextStyle(fontSize: 16)),
                 ],
               ),
             ),

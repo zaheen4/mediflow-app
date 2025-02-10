@@ -132,7 +132,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     height: 10,
                   ),
                   Text(
-                    "It is a device that measures blood glucose levels, typically used by people with diabetes to monitor and manage their condition. It works by testing a small blood sample and providing a glucose reading.",
+                    "This is only a demo description of the product...",
                     style: TextStyle(
                         color: Colors.grey[600], fontSize: 14, height: 2),
                   )
