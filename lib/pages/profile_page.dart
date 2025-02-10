@@ -169,10 +169,10 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _showEditProfileDialog,
-              child: const Text("Edit Profile"),
               style: ElevatedButton.styleFrom(
                 alignment: Alignment.centerRight,
               ),
+              child: const Text("Edit Profile"),
             ),
           ],
         ),

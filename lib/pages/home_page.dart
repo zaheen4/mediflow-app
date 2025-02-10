@@ -47,12 +47,18 @@ class _HomePageState extends State<HomePage> {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: Text("Cancel", style: TextStyle(color: Colors.black),),
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
               ElevatedButton(
                 onPressed: () => Navigator.pop(context, true),
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: Text("Logout", style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Logout",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),
@@ -233,9 +239,13 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: productList.length,
-              itemBuilder: (context, index) => ProductTitle(
-                  product: productList[index],
-                  onTap: () => navigateToProductDetails(index)),
+              itemBuilder: (context, index) => Container(
+                width: 250,
+                margin: EdgeInsets.symmetric(horizontal: 5),
+                child: ProductTitle(
+                    product: productList[index],
+                    onTap: () => navigateToProductDetails(index)),
+              ),
             ),
           ),
           const SizedBox(height: 100),
