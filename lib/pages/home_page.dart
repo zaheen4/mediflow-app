@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               _scaffoldKey.currentState?.openDrawer(), // Open drawer using key
         ),
         title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 90),
+          padding: const EdgeInsets.symmetric(horizontal: 72),
           child: Text(
             'MediFlow',
             style: TextStyle(color: Colors.grey[900]),

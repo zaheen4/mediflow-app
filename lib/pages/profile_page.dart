@@ -115,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
       // Update email if it is different
       if (newEmail.isNotEmpty && newEmail != _email) {
-        await _user!.updateEmail(newEmail);
+        await _user!.verifyBeforeUpdateEmail(newEmail);
         setState(() {
           _email = newEmail;
           _username = newEmail.split('@')[0]; // Update username
@@ -141,7 +141,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Profile",
           style: TextStyle(color: Colors.white),
         ),
@@ -170,6 +170,9 @@ class _ProfilePageState extends State<ProfilePage> {
             ElevatedButton(
               onPressed: _showEditProfileDialog,
               child: const Text("Edit Profile"),
+              style: ElevatedButton.styleFrom(
+                alignment: Alignment.centerRight,
+              ),
             ),
           ],
         ),
