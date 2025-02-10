@@ -20,6 +20,20 @@ class _LoginPageState extends State<LoginPage> {
   // Loading Time..
   Duration get loadingTime => const Duration(milliseconds: 2000);
 
+  bool _showGoogleButton = false; // Initially hidden
+  void initState() {
+    super.initState();
+
+    // Delay the appearance of the Google Sign-In button
+    Future.delayed(Duration(seconds: 2), () {
+      if (mounted) {
+        setState(() {
+          _showGoogleButton = true;
+        });
+      }
+    });
+  }
+
   Future<String?> _authUser(LoginData data) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -65,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
       }
 
       final GoogleSignInAuthentication googleAuth =
-      await googleUser.authentication;
+          await googleUser.authentication;
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
@@ -91,9 +105,7 @@ class _LoginPageState extends State<LoginPage> {
           SvgPicture.asset(
             AssetsPath.backgroundSvg,
             fit: BoxFit.cover,
-            height: MediaQuery
-                .sizeOf(context)
-                .height,
+            height: MediaQuery.sizeOf(context).height,
             width: double.maxFinite,
           ),
           // Login form (FlutterLogin or any other content)
@@ -165,42 +177,45 @@ class _LoginPageState extends State<LoginPage> {
           ),
 
           // The Google sign-in button fixed at the bottom
-          Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: ElevatedButton.icon(
-                onPressed: () async {
-                  final error = await _googleLogin(context);
-                  if (error != null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(error)),
-                    );
-                  }
-                },
-                icon: SvgPicture.asset(
-                  'assets/icons/google_icon.svg',
-                  height: 24,
-                  width: 24,
-                ),
-                label: Text(
-                  'Sign in with Google',
-                  style: TextStyle(color: secondaryColor, fontSize: 16),
-                ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20, vertical: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+          Visibility(
+            visible: _showGoogleButton, // Controls button visibility
+            child: Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    final error = await _googleLogin(context);
+                    if (error != null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(error)),
+                      );
+                    }
+                  },
+                  icon: SvgPicture.asset(
+                    'assets/icons/google_icon.svg',
+                    height: 24,
+                    width: 24,
                   ),
-                  elevation: 15,
+                  label: Text(
+                    'Sign in with Google',
+                    style: TextStyle(color: secondaryColor, fontSize: 16),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 15,
+                  ),
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
